@@ -1,5 +1,6 @@
 {
   "buildCommand": "node scripts/generate-version.cjs && ng build",
+  "outputDirectory": "dist/angular-spaversion/browser",
   "headers": [
     {
       "source": "/",
