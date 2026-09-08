@@ -1,6 +1,12 @@
-<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-6">
   <p>SPA Version 5</p>
   <p>{{ version() }}</p>
+
+  <div class="flex flex-col gap-3">
+    <p>count: {{ count() }}</p>
+    <button type="button" class="border" (click)="increment()">++</button>
+    <button type="button" class="border" (click)="decrement()">--</button>
+  </div>
 </div>
 
 <router-outlet />

@@ -12,4 +12,13 @@ export class App {
   protected readonly title = signal('angular-spaversion');
 
   version = signal(APP_VERSION);
+  count = signal(0);
+
+  increment() {
+    this.count.update((c) => (c += 1));
+  }
+
+  decrement() {
+    this.count.update((c) => (c -= 1));
+  }
 }
