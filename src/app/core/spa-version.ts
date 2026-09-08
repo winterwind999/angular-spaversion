@@ -20,17 +20,25 @@ export async function checkSpaVersion(): Promise<void> {
 }
 
 export async function pollForNewVersion(): Promise<void> {
+  console.log(`[spa-version] polling for new version… (current: ${APP_VERSION})`);
+
   try {
-    console.log('polling...');
     const res = await fetch('/version.json', { cache: 'no-store' });
-    if (!res.ok) return;
+
+    if (!res.ok) {
+      console.warn(`[spa-version] poll failed, status: ${res.status}`);
+      return;
+    }
+
     const { version: latest } = await res.json();
+    console.log(`[spa-version] latest from server: ${latest}`);
 
     if (latest && latest !== APP_VERSION) {
       await forceRefresh(APP_VERSION, latest);
     }
-  } catch {
+  } catch (error) {
     // network hiccup — ignore, try again next interval
+    console.warn('[spa-version] poll error:', error);
   }
 }
 
