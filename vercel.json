@@ -1,4 +1,5 @@
 {
+  "buildCommand": "node scripts/generate-version.cjs && ng build",
   "headers": [
     {
       "source": "/",
