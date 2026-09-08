@@ -1,6 +1,16 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { App } from './app/app';
+import { appConfig } from './app/app.config';
+import { checkSpaVersion } from './app/core/spa-version';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+async function bootstrap(): Promise<void> {
+  try {
+    await checkSpaVersion();
+
+    await bootstrapApplication(App, appConfig);
+  } catch (error) {
+    console.error('Failed to bootstrap application:', error);
+  }
+}
+
+bootstrap();
