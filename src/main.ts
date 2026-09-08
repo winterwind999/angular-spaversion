@@ -8,7 +8,7 @@ async function bootstrap(): Promise<void> {
     await checkSpaVersion();
     await bootstrapApplication(App, appConfig);
 
-    setInterval(() => void pollForNewVersion(), 30_000);
+    setInterval(() => void pollForNewVersion(), 5_000);
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'visible') void pollForNewVersion();
     });
