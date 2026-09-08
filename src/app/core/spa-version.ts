@@ -21,6 +21,7 @@ export async function checkSpaVersion(): Promise<void> {
 
 export async function pollForNewVersion(): Promise<void> {
   try {
+    console.log('polling...');
     const res = await fetch('/version.json', { cache: 'no-store' });
     if (!res.ok) return;
     const { version: latest } = await res.json();
