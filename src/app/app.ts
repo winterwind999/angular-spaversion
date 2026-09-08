@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { APP_VERSION } from './core/version';
+import { VersionAlertDialog } from './core/version-alert-dialog/version-alert-dialog';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, VersionAlertDialog],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

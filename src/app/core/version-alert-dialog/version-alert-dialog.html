@@ -1,0 +1,17 @@
+<hlm-alert-dialog [state]="state()" (stateChanged)="onStateChanged($event)">
+  <hlm-alert-dialog-content *hlmAlertDialogPortal="let ctx">
+    <hlm-alert-dialog-header>
+      <h2 hlmAlertDialogTitle>
+        New changes have been deployed, would you like to get the latest changes or continue with
+        your work?
+      </h2>
+      <p hlmAlertDialogDescription>Your changes will not be saved!</p>
+    </hlm-alert-dialog-header>
+    <hlm-alert-dialog-footer>
+      <button hlmAlertDialogCancel variant="destructive" class="w-24" (click)="onCancel()">
+        No
+      </button>
+      <button hlmAlertDialogAction class="w-52" (click)="onConfirm()">Yes</button>
+    </hlm-alert-dialog-footer>
+  </hlm-alert-dialog-content>
+</hlm-alert-dialog>
