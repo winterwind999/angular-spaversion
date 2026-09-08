@@ -14,7 +14,7 @@ export async function checkSpaVersion(): Promise<void> {
 
   // Current deployment.
   if (storedVersion === APP_VERSION) {
-    localStorage.removeItem(RELOAD_KEY);
+    sessionStorage.removeItem(RELOAD_KEY);
     return;
   }
 
@@ -25,13 +25,10 @@ export async function checkSpaVersion(): Promise<void> {
 
   if (alreadyReloaded === APP_VERSION) {
     console.warn('SPA version is still inconsistent after reload. Skipping another reload.');
-
-    localStorage.setItem(STORAGE_KEY, APP_VERSION);
     return;
   }
 
   sessionStorage.setItem(RELOAD_KEY, APP_VERSION);
-  localStorage.setItem(STORAGE_KEY, APP_VERSION);
 
   await clearApplicationCaches();
 
